@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cloudparser.ru/Css/3d/AwesomeFont/css/font-awesome.min.css?2">
+    <link rel="stylesheet" href="https://cloudparser.ru/css/3d/ui/jquery-ui.css?1">
+
+    <link rel="shortcut icon" href="https://cloudparser.ru/img/favicon.png">
+    <link href="https://cloudparser.ru/cssBundles/common?v=zTv63Y35QcJiPDG3d3KaarI7GEdCoxAHzvRoqLom-Eo1" rel="stylesheet"/>
+
+    
+    <link rel='stylesheet' type='text/css' href='https://cloudparser.ru/js/3d/multiple-select/multiple-select.css?v=635849168369774570' media='screen' />
+
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="https://vk.com/js/api/openapi.js?146" type="text/javascript"></script>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Редактирование сайта - Облачный парсер</title>
+    <meta name="description" content="" />
+
+    <meta name="keywords" content="" />
+
+
+
+
+
+    <script>
+        CP = {};
+        CP.isFrame = false;
+    </script>
+</head>
+
+<body  >
+
+    <div class="page-wr">
+        <div class="header" id="header">
+            <div class="header__logo"><a href="/" title="Облачный парсер" class="logo-img"></a></div>
+            <div class="header__nav">
+
+
+
+
+
+
+
+                <ul class="c-menu auth-menu">
+                    <li class="c-menu__i">
+                        <a class="c-menu__i1" href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Каталог сайтов</a>
+                        <ul class="c-menu__sub">
+                            <li class="c-menu__si">
+                                <a href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Все сайты</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/catalog?free=1" ><i class='fa fa-gift'></i>&nbsp;Бесплатные сайты</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="javascript:void(0)" id = bookmarkMenuItem><i class='fa fa-bookmark'></i> У меня в закладках</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i2" href="/responses" ><i class='fa fa-star'></i>&nbsp;Отзывы</a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i3" href="/news" ><i class='fa fa-newspaper-o'></i>&nbsp;Новости</a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i4" href="/history" ><i class='fa fa-history'></i>&nbsp;История загрузок</a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i5" href="/billing" ><span title='Использовано 1 сайт из 1 включенных в тариф'>8950 руб. (1 / 1)</span></a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i6" href="/price" >Стоимость</a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i7" href="/page/suppliers" >Поставщику</a>
+                    </li>
+                    <li class="c-menu__i">
+                        <a class="c-menu__i8" href="/users/profile" >Профиль</a>
+                        <ul class="c-menu__sub">
+                            <li class="c-menu__si">
+                                <a href="/users/profile" ><i class='fa fa-user'></i> Профиль пользователя</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/billing/pay" ><i class='fa fa-credit-card'></i> Пополнить баланс</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="mailto:welcome@cloudparser.ru" ><i class='fa fa-envelope'></i>&nbsp;welcome@cloudparser.ru</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/logout" ><i class='fa fa-sign-out'></i>&nbsp;Выход</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="#" >----------</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/admin" >Список сайтов</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/admin/accounts" >Список пользователей</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/admin/events" >События</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/admin/tests" >Сеансы тестирования</a>
+                            </li>
+                            <li class="c-menu__si">
+                                <a href="/admin/tools" >Инструменты</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page">
+
+
+            <div>
+                <a href="/page/settingsHelp" target="_blank" style="float:right;">Шпаргалочка</a> <a href="/Wiki" target="_blank" style="float:right; margin-right:20px;">Инструкции</a>
+                <div class='back-link'>←  <a href='/admin'>Назад</a></div>
+            </div>
+
+            <h1 class="page-header">Добавление сайта</h1>
+
+
+
+            <form method="post" class="form-panel" id="siteForm">
+
+                <div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+                </ul></div>
+
+                <table class="form site-form">
+                    <tr>
+                        <td colspan="2">
+                            <div class="page-section-header">
+                                <h2>Общая информация</h2>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="form__title">
+                            Домен
+                        </td>
+                        <td class="form__field">
+                            <table class="form__row">
+                                <tr>
+                                    <td class="form__row-field" style="width:200px;">
+                                        <input class="textbox site-form__short" data-val="true" data-val-required="Укажите домен" id="edSiteDomain" name="domain" placeholder="Например, sima-land.ru" style="width:100%;" type="text" value="" />
+
+                                        <span class="field-validation-valid" data-valmsg-for="SiteDomain" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="form__row-field">
+                                        Кодировка <select class="select" id="edEnconding" name="charset"><option value="1">utf-8</option>
+                                        <option value="2">cp1251</option>
+                                        <option value="3">cp1252</option>
+                                        <option value="4">koi8-r</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="Encoding" data-valmsg-replace="true"></span>
+                                </td>
+
+                                <td class="form__row-field">
+                                    <label><input class="checkbox" data-val="true" data-val-required="Требуется поле IsEnable." id="edIsEnable" name="active" title="Виден в Каталоге сайтов" type="checkbox" value="1" /> Активен</label>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Название
+                    </td>
+                    <td class="form__field">
+                        <table class="form__row" style="width:100%;">
+                            <tr>
+                                <td class="form__row-field" style="width:80%">
+                                    <input class="textbox" data-val="true" data-val-required="Укажите название" id="SiteTitle" name="name" paceholder="Название сайта или поставщика" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="SiteTitle" data-valmsg-replace="true"></span>
+                                    <span class="field-validation-valid" data-valmsg-for="ContactEmail" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="form__row-field">
+                                    <input class="textbox" data-val="true" data-val-required="Укажите email поставщика или - (минус), если email-а на сайте нет" id="ContactEmail" name="email" placeholder="Контактный email" type="text" value="" />
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Образец ссылки
+                    </td>
+                    <td class="form__field">
+                        <input class="textbox" data-val="true" data-val-required="Укажите образец ссылки" id="edProductListUrlExample" name="linkExample" placeholder="https://www.sima-land.ru/eksklyuzivnye-tovary/sport-i-otdyh/sportivnye-nagrady/" title="Образец ссылки на список товаров" type="text" value="" />
+                        <span class="field-validation-valid" data-valmsg-for="ProductListUrlExample" data-valmsg-replace="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Описание сайта<br /> (без Html-тегов)
+                    </td>
+                    <td class="form__field">
+                        <textarea class="textarea" cols="20" data-val="true" data-val-required="Укажите описание" id="SiteDescription" name="description" rows="2" style="height:100px;"></textarea>
+                        <span class="field-validation-valid" data-valmsg-for="SiteDescription" data-valmsg-replace="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Комментарий для<br /> пользователя
+                    </td>
+                    <td class="form__field">
+                        <textarea class="textarea" cols="20" id="UserComments" name="userComment" rows="2" style="height:50px;">
+                        </textarea>
+                        <span class="field-validation-valid" data-valmsg-for="UserComments" data-valmsg-replace="true"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td height='20'></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="page-section-header">
+                            <h2>Настройки парсинга</h2>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Url-карточки
+                    </td>
+                    <td class="form__field">
+
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_ProductCardUrlXPath" name="cardUrl" placeholder="XPath" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductCardUrlXPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="cardUrlRegEx" name="cardUrlRegEx" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductCardUrlRegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="form__help">
+                                Указывается Url (//div[@class='card-table-desc']/a/@href) на карточку. <br />
+                                При настройке без карточки, но при ее наличии, указывается относительно контейнера элемента списка.
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="form__title">
+                        Пауза между<br />запросами, мс
+                    </td>
+                    <td class="form__field">
+                        <table style="width:auto;">
+                            <tr>
+                                <td>
+                                    <input class="textbox" data-val="true" data-val-number="Значением поля Pause должно быть число." id="Pause" name="requestPause" placeholder="" style="width:100px;" type="number" value="0" />
+                                    <span class="field-validation-valid" data-valmsg-for="Pause" data-valmsg-replace="true"></span>
+                                    <div class="form__help">Не указана - дефолтная</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="page-section-header">
+                            <h3>Постраничность</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Выражение до номера <br>страницы
+                    </td>
+                    <td class="form__field">
+                        <input class="textbox" data-val="true" data-val-regex="Шаблон должен содержать позицию {P}" data-val-regex-pattern=".*\{P\}.*" helptext="Шаблон ссылки - выражение вида page={P}" id="ParseSettings_PagingSettings_UrlTemplate" name="beforePaging" placeholder="Например, page={P} или page/{P} " title="Шаблон ссылки" type="text" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Выражение после номера <br>страницы
+                    </td>
+                    <td class="form__field">
+                        <input class="textbox" data-val="true" data-val-regex="Шаблон должен содержать позицию {P}" data-val-regex-pattern=".*\{P\}.*" helptext="Шаблон ссылки - выражение вида page={P}" id="ParseSettings_PagingSettings_UrlTemplate" name="afterPaging" placeholder="Например, page={P} или page/{P} " title="Шаблон ссылки" type="text" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Смещение
+                    </td>
+                    <td>
+                        <table class="site-form-row-table" style="width:auto;">
+                            <tr>
+                                <td style="width: 60px;">
+                                    <input class="textbox" data-val="true" data-val-number="Значением поля Offset должно быть число." data-val-range="Смещение не может быть отрицательным" data-val-range-max="2147483647" data-val-range-min="0" data-val-required="Требуется поле Offset." id="ParseSettings_PagingSettings_Offset" name="ParseSettings.PagingSettings.Offset" title="Размер смещения для страницы. Если > 0 , то пейджинг задается смещением" type="number" value="0" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.PagingSettings.Offset" data-valmsg-replace="true"></span>
+                                    <div class="form__help">0 - без</div>
+                                </td>
+                                <td style="padding-left: 20px;">
+                                    <label>Нумерация с 0 <input class="checkbox" data-val="true" data-val-required="Требуется поле PageStartFrom0." id="edPageStartFrom0" name="ParseSettings.PagingSettings.PageStartFrom0" type="checkbox" value="true" /><input name="ParseSettings.PagingSettings.PageStartFrom0" type="hidden" value="false" /></label>
+                                </td>
+                                <td style="padding-left:20px;">
+                                    Параметр пейджинга в урл карточки <input class="textbox" id="ParseSettings_PagingSettings_PagingParamNameInCardUrl" name="ParseSettings.PagingSettings.PagingParamNameInCardUrl" style="width:100px;" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.PagingSettings.PagingParamNameInCardUrl" data-valmsg-replace="true"></span>
+                                    <div class="form__help">Исключить параметр в ссылке на карточку</div>
+                                </td>
+                                <td style="padding-left:20px;">
+                                    <input class="textbox" data-val="true" data-val-number="Значением поля AllowedPagesCountWithRepeatableProducts должно быть число." id="ParseSettings_PagingSettings_AllowedPagesCountWithRepeatableProducts" name="ParseSettings.PagingSettings.AllowedPagesCountWithRepeatableProducts" placeholder="Кол-во повтор. страниц" title="Последовательное кол-во страниц с повторяющимся в рамках ссылки товаров, которые не будут считаться окончанием листования, по умолчанию - 2" type="text" value="" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="page-section-header">
+                            <h3>Свойства товара</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Изображения
+                    </td>
+                    <td class="form__field">
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                        <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Images_XPathContentType" name="ParseSettings.Images.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                            <option value="1">Html</option>
+                                            <option value="2">Eval</option>
+                                            <option value="3">HtmlOuter</option>
+                                        </select>
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Images.XPathContentType" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_Images_XPath" name="ParseSettings.Images.XPath" placeholder="XPath" type="text" value="//a[@class=&#39;fancybox-open&#39;]/@href" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Images.XPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="ParseSettings_Images_RegExp" name="ParseSettings.Images.RegExp" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Images.RegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__more-btn">
+
+                                        <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="site-form-row-table__more jsItemMore">
+                                <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Images_ItemScript" name="ParseSettings.Images.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                                </textarea>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Название
+                    </td>
+                    <td class="form__field">
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                        <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Title_XPathContentType" name="ParseSettings.Title.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                            <option value="1">Html</option>
+                                            <option value="2">Eval</option>
+                                            <option value="3">HtmlOuter</option>
+                                        </select>
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Title.XPathContentType" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_Title_XPath" name="ParseSettings.Title.XPath" placeholder="XPath" type="text" value="//h1" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Title.XPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="ParseSettings_Title_RegExp" name="ParseSettings.Title.RegExp" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Title.RegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__more-btn">
+
+                                        <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="site-form-row-table__more jsItemMore">
+                                <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Title_ItemScript" name="ParseSettings.Title.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                                </textarea>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Артикул
+                    </td>
+                    <td class="form__field">
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                        <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_ProductCode_XPathContentType" name="ParseSettings.ProductCode.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                            <option value="1">Html</option>
+                                            <option value="2">Eval</option>
+                                            <option value="3">HtmlOuter</option>
+                                        </select>
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductCode.XPathContentType" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_ProductCode_XPath" name="ParseSettings.ProductCode.XPath" placeholder="XPath" type="text" value="//strong[@itemprop=&#39;sku&#39;]" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductCode.XPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="ParseSettings_ProductCode_RegExp" name="ParseSettings.ProductCode.RegExp" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductCode.RegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__more-btn">
+
+                                        <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="site-form-row-table__more jsItemMore">
+                                <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_ProductCode_ItemScript" name="ParseSettings.ProductCode.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:3px;"><label><input checked="checked" data-val="true" data-val-required="Требуется поле IsProductCodeUnique." id="ParseSettings_IsProductCodeUnique" name="ParseSettings.IsProductCodeUnique" type="checkbox" value="true" /><input name="ParseSettings.IsProductCodeUnique" type="hidden" value="false" /> Артикул уникален</label></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        ID товара
+                    </td>
+                    <td class="form__field">
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                        <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_ProductID_XPathContentType" name="ParseSettings.ProductID.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                            <option value="1">Html</option>
+                                            <option value="2">Eval</option>
+                                            <option value="3">HtmlOuter</option>
+                                        </select>
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductID.XPathContentType" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_ProductID_XPath" name="ParseSettings.ProductID.XPath" placeholder="XPath" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductID.XPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="ParseSettings_ProductID_RegExp" name="ParseSettings.ProductID.RegExp" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.ProductID.RegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__more-btn">
+
+                                        <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="site-form-row-table__more jsItemMore">
+                                <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_ProductID_ItemScript" name="ParseSettings.ProductID.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form__help">Указывается для неуникального или отсутствующего Артикула. Стараться заполнять даже при уникальном артикуле для товаров без карточки!<br /> Парметры для описания на карточке: {CardUrlID} - хеш от урла, {qs:имя_парамера} - значение из QueryString, {NameHash} - использовать только если название товара уникально</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="form__title">
+                        Цена
+                    </td>
+                    <td class="form__field">
+                        <div class="jsParamParseSetting">
+                            <table class="site-form-row-table">
+                                <tr>
+                                    <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                        <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Price_XPathContentType" name="ParseSettings.Price.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                            <option value="1">Html</option>
+                                            <option value="2">Eval</option>
+                                            <option value="3">HtmlOuter</option>
+                                        </select>
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Price.XPathContentType" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__xpath">
+                                        <input class="textbox" id="ParseSettings_Price_XPath" name="ParseSettings.Price.XPath" placeholder="XPath" type="text" value="//meta[@itemprop=&quot;price&quot;]/@content" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Price.XPath" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__regex">
+                                        <input class="textbox" id="ParseSettings_Price_RegExp" name="ParseSettings.Price.RegExp" placeholder="RegExp" type="text" value="" />
+                                        <span class="field-validation-valid" data-valmsg-for="ParseSettings.Price.RegExp" data-valmsg-replace="true"></span>
+                                    </td>
+                                    <td class="site-form-row-table__more-btn">
+
+                                        <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="site-form-row-table__more jsItemMore">
+                                <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Price_ItemScript" name="ParseSettings.Price.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div style="margin-top:5px;"><select class="select" data-val="true" data-val-number="Значением поля PriceCurrencyID должно быть число." data-val-required="Требуется поле PriceCurrencyID." id="ParseSettings_PriceCurrencyID" name="ParseSettings.PriceCurrencyID"><option selected="selected" value="1">Российский рубль (RUB)</option>
+                                <option value="2">Доллар США (USD)</option>
+                                <option value="3">Евро (EUR)</option>
+                                <option value="4">Украинская гривна (UAH)</option>
+                                <option value="5">Белорусский рубль (BYR)</option>
+                                <option value="6">Казахский тенге (KZT)</option>
+                                <option value="7">Английский фунт (GBP)</option>
+                                <option value="8">Польский злотый (PLN)</option>
+                                <option value="9">Японская йена (JPY)</option>
+                                <option value="10">Шведская крона (SEK)</option>
+                                <option value="11">Чешская крона (CZK)</option>
+                                <option value="12">Юань (CNY)</option>
+                                <option value="13">Корейская Вона (KRW)</option>
+                                <option value="14">Узбекский сум (UZS)</option>
+                                <option value="15">Турецкая лира (TRY)</option>
+                            </select> - валюта, в которой указана цена.
+                            <label style="margin-left: 100px;"><input class="checkbox" data-val="true" data-val-required="Требуется поле PriceCurrencyAutoDetect." id="edPriceCurrencyAutoDetect" name="ParseSettings.PriceCurrencyAutoDetect" type="checkbox" value="true" /><input name="ParseSettings.PriceCurrencyAutoDetect" type="hidden" value="false" /> Определять валюту по первому товару</label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr id="rowPriceCurrencyAuto">
+                <td class="form__title">
+                    Валюта (автоопределение)
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_PriceCurrencyAuto_XPathContentType" name="ParseSettings.PriceCurrencyAuto.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.PriceCurrencyAuto.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_PriceCurrencyAuto_XPath" name="ParseSettings.PriceCurrencyAuto.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.PriceCurrencyAuto.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_PriceCurrencyAuto_RegExp" name="ParseSettings.PriceCurrencyAuto.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.PriceCurrencyAuto.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_PriceCurrencyAuto_ItemScript" name="ParseSettings.PriceCurrencyAuto.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form__help">Результат должен возвращать один из доступных кодов валюты. Если не удалось определить валюту, то валютой считается выбранная выше</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="form__title">
+                    Описание
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Description_XPathContentType" name="ParseSettings.Description.XPathContentType" title="Тип значения для XPath" value="0"><option value="0">Text</option>
+                                        <option selected="selected" value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Description.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Description_XPath" name="ParseSettings.Description.XPath" placeholder="XPath" type="text" value="//div[@class=&#39;item-description&#39;]" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Description.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Description_RegExp" name="ParseSettings.Description.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Description.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Description_ItemScript" name="ParseSettings.Description.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div style="margin-top:3px;">
+                        <label><input data-val="true" data-val-required="Требуется поле AllowImagesInDescription." id="ParseSettings_AllowImagesInDescription" name="ParseSettings.AllowImagesInDescription" type="checkbox" value="true" /><input name="ParseSettings.AllowImagesInDescription" type="hidden" value="false" /> Разрешить использование тегов [img] в описании</label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Категория 1
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Division1_XPathContentType" name="ParseSettings.Division1.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division1.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Division1_XPath" name="ParseSettings.Division1.XPath" placeholder="XPath" type="text" value="list:(//span[@itemprop=&quot;title&quot; and not(contains(.,&#39;Главная&#39;))])[1]" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division1.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Division1_RegExp" name="ParseSettings.Division1.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division1.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Division1_ItemScript" name="ParseSettings.Division1.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form__help">Добавьте в XPATH префикс <b>list:</b> для поиска категории в списке товаров</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Категория 2
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Division2_XPathContentType" name="ParseSettings.Division2.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division2.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Division2_XPath" name="ParseSettings.Division2.XPath" placeholder="XPath" type="text" value="list://div[@class=&#39;category-breadcrumbs&#39;]/div/span[last()]/text()" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division2.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Division2_RegExp" name="ParseSettings.Division2.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division2.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Division2_ItemScript" name="ParseSettings.Division2.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Категория 3
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Division3_XPathContentType" name="ParseSettings.Division3.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division3.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Division3_XPath" name="ParseSettings.Division3.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division3.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Division3_RegExp" name="ParseSettings.Division3.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division3.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Division3_ItemScript" name="ParseSettings.Division3.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Категория 4
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Division4_XPathContentType" name="ParseSettings.Division4.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division4.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Division4_XPath" name="ParseSettings.Division4.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division4.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Division4_RegExp" name="ParseSettings.Division4.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Division4.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Division4_ItemScript" name="ParseSettings.Division4.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Размер, габариты<br /> (не параметр!)
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Size_XPathContentType" name="ParseSettings.Size.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Size.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Size_XPath" name="ParseSettings.Size.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Size.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Size_RegExp" name="ParseSettings.Size.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Size.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Size_ItemScript" name="ParseSettings.Size.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Производитель
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Producer_XPathContentType" name="ParseSettings.Producer.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Producer.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Producer_XPath" name="ParseSettings.Producer.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Producer.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Producer_RegExp" name="ParseSettings.Producer.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Producer.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Producer_ItemScript" name="ParseSettings.Producer.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Вес
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Weight_XPathContentType" name="ParseSettings.Weight.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Weight.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_Weight_XPath" name="ParseSettings.Weight.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Weight.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_Weight_RegExp" name="ParseSettings.Weight.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.Weight.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_Weight_ItemScript" name="ParseSettings.Weight.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Наличие
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table">
+                        <tr>
+                            <td class="" style="width: 10%; vertical-align: middle;">
+                                <select class="select" data-val="true" data-val-required="Требуется поле XPathCheckType." id="ParseSettings_InStock_XPathCheckType" name="ParseSettings.InStock.XPathCheckType" title="Тип проверки значения XPath" value="0"><option selected="selected" value="0">XPathExists</option>
+                                    <option value="1">XPathNotExists</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.InStock.XPathCheckType" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 60%;">
+                                <input class="textbox" id="ParseSettings_InStock_XPath" name="ParseSettings.InStock.XPath" placeholder="XPath" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.InStock.XPath" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 1%; vertical-align: middle;">
+                                <select class="select" data-val="true" data-val-required="Требуется поле RegExCheckType." id="ParseSettings_InStock_RegExCheckType" name="ParseSettings.InStock.RegExCheckType" title="Тип проверки значения RegEx" value="0"><option selected="selected" value="0">Match</option>
+                                    <option value="1">NotMatch</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.InStock.RegExCheckType" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 20%;">
+                                <input class="textbox" id="ParseSettings_InStock_RegExp" name="ParseSettings.InStock.RegExp" placeholder="RegExp" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.InStock.RegExp" data-valmsg-replace="true"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form__help">Например, XPath: <b>//div[@class='instock']</b>, RegEx:<b>"Наличие:\s*в наличии($|\b)</b></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Мин. кол-во для заказа<br />
+                    (по требованию)
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table">
+                            <tr>
+                                <td class="site-form-row-table__type" style="vertical-align: middle;">
+                                    <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_MinOrderCount_XPathContentType" name="ParseSettings.MinOrderCount.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                        <option value="1">Html</option>
+                                        <option value="2">Eval</option>
+                                        <option value="3">HtmlOuter</option>
+                                    </select>
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.MinOrderCount.XPathContentType" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__xpath">
+                                    <input class="textbox" id="ParseSettings_MinOrderCount_XPath" name="ParseSettings.MinOrderCount.XPath" placeholder="XPath" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.MinOrderCount.XPath" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__regex">
+                                    <input class="textbox" id="ParseSettings_MinOrderCount_RegExp" name="ParseSettings.MinOrderCount.RegExp" placeholder="RegExp" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.MinOrderCount.RegExp" data-valmsg-replace="true"></span>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="site-form-row-table__more jsItemMore">
+                            <textarea class="textarea site-form-row-table__script" cols="20" id="ParseSettings_MinOrderCount_ItemScript" name="ParseSettings.MinOrderCount.ItemScript" placeholder="Скрипт постобработки значений поэлементно. Пример: val = &#39;some-prefix&#39; + val;" rows="2">
+                            </textarea>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="page-section-header">
+                        <h3>Параметры (то, что можно выбирать)</h3>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input class="textbox" id="ParseSettings_Option1_Title" name="ParseSettings.Option1.Title" placeholder="Название п-ра 1" type="text" value="" />
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table form__field-row ">
+                        <tr>
+                            <td class="" style="width: 9%; vertical-align: middle;">
+                                <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Option1_XPathContentType" name="ParseSettings.Option1.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                    <option value="1">Html</option>
+                                    <option value="2">Eval</option>
+                                    <option value="3">HtmlOuter</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option1.XPathContentType" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 70%;">
+                                <input class="textbox" id="ParseSettings_Option1_XPath" name="ParseSettings.Option1.XPath" placeholder="XPath" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option1.XPath" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 30%;">
+                                <input class="textbox" id="ParseSettings_Option1_RegExp" name="ParseSettings.Option1.RegExp" placeholder="RegExp" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option1.RegExp" data-valmsg-replace="true"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form__field-row">
+                        <input class="textbox" id="ParseSettings_Option1_ItemsRegExp" name="ParseSettings.Option1.ItemsRegExp" placeholder="RegExp элемента" style="width:150px;" type="text" value="" />
+                        <span class="form__help">Match-выражение для выборки кусочка из элемента <b>^[^\s]+</b> - 1е слово, <a href="http://regexstorm.net/tester" target="_blank">Проверка</a></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="textbox" id="ParseSettings_Option2_Title" name="ParseSettings.Option2.Title" placeholder="Название п-ра 2" type="text" value="" />
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table form__field-row ">
+                        <tr>
+                            <td class="" style="width: 9%; vertical-align: middle;">
+                                <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Option2_XPathContentType" name="ParseSettings.Option2.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                    <option value="1">Html</option>
+                                    <option value="2">Eval</option>
+                                    <option value="3">HtmlOuter</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option2.XPathContentType" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 70%;">
+                                <input class="textbox" id="ParseSettings_Option2_XPath" name="ParseSettings.Option2.XPath" placeholder="XPath" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option2.XPath" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 30%;">
+                                <input class="textbox" id="ParseSettings_Option2_RegExp" name="ParseSettings.Option2.RegExp" placeholder="RegExp" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option2.RegExp" data-valmsg-replace="true"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form__field-row">
+                        <input class="textbox" id="ParseSettings_Option2_ItemsRegExp" name="ParseSettings.Option2.ItemsRegExp" placeholder="RegExp элемента" style="width:150px;" type="text" value="" />
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="textbox" id="ParseSettings_Option3_Title" name="ParseSettings.Option3.Title" placeholder="Название п-ра 3" type="text" value="" />
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table form__field-row ">
+                        <tr>
+                            <td class="" style="width: 9%; vertical-align: middle;">
+                                <select class="select" data-val="true" data-val-required="Требуется поле XPathContentType." id="ParseSettings_Option3_XPathContentType" name="ParseSettings.Option3.XPathContentType" title="Тип значения для XPath" value="0"><option selected="selected" value="0">Text</option>
+                                    <option value="1">Html</option>
+                                    <option value="2">Eval</option>
+                                    <option value="3">HtmlOuter</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option3.XPathContentType" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 70%;">
+                                <input class="textbox" id="ParseSettings_Option3_XPath" name="ParseSettings.Option3.XPath" placeholder="XPath" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option3.XPath" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 30%;">
+                                <input class="textbox" id="ParseSettings_Option3_RegExp" name="ParseSettings.Option3.RegExp" placeholder="RegExp" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="ParseSettings.Option3.RegExp" data-valmsg-replace="true"></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="form__field-row">
+                        <input class="textbox" id="ParseSettings_Option3_ItemsRegExp" name="ParseSettings.Option3.ItemsRegExp" placeholder="RegExp элемента" style="width:150px;" type="text" value="" />
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2">
+                    <div class="page-section-header">
+                        <h3>Дополнительные характеристики</h3>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" class="form__field">
+                    <div id="featuresEditor">
+                    </div>
+                    <span class="field-validation-valid" data-valmsg-for="ParseSettings.FeaturesSettings" data-valmsg-replace="true"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="page-section-header">
+                        <h3>Авторизация</h3>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    <label for="edAuthEnable">Вкл. для пользователя</label>
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table">
+                        <tr>
+                            <td class="form__field" style="width: 30px;">
+                                <input class="checkbox" data-val="true" data-val-required="Требуется поле Enabled." id="edAuthEnable" name="AuthSettings.Enabled" type="checkbox" value="true" /><input name="AuthSettings.Enabled" type="hidden" value="false" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.Enabled" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="form__title">
+                                Тип авторизации
+                            </td>
+                            <td class="">
+                                <select class="select" data-val="true" data-val-required="Требуется поле AuthenticationType." id="edAuthenticationType" name="AuthSettings.AuthenticationType" title="Тип авторизации" value="0"><option selected="selected" value="0">None</option>
+                                    <option value="1">Simple</option>
+                                    <option value="2">Bitrix</option>
+                                    <option value="3">Joomla25</option>
+                                    <option value="4">Joomla15</option>
+                                    <option value="5">RubyOnRails5</option>
+                                    <option value="6">InSales</option>
+                                    <option value="7">Joomla20100126</option>
+                                </select>
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthenticationType" data-valmsg-replace="true"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    <label for="edUsePredefinedAuthParams">Использовать<br /> логин/пароль</label>
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table">
+                        <tr>
+                            <td class="form__field" style="width: 30px; padding: 10px 0 0 0;">
+                                <input class="checkbox" data-val="true" data-val-required="Требуется поле UsePredefinedAuthParams." id="edUsePredefinedAuthParams" name="AuthSettings.UsePredefinedAuthParams" type="checkbox" value="true" /><input name="AuthSettings.UsePredefinedAuthParams" type="hidden" value="false" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.UsePredefinedAuthParams" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 338px;">
+                                <input class="textbox" id="edPredefinedLogin" name="AuthSettings.PredefinedLogin" placeholder="Логин" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.PredefinedLogin" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="width: 339px;">
+                                <input class="textbox" id="edPredefinedPass" name="AuthSettings.PredefinedPass" placeholder="Пароль" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.PredefinedPass" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="" style="padding-left: 10px;">
+                                <button type="button" class="button" id="checkAuthBtn" title="Проверить настройки авторизации">Проверить</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form__help">Указывается, если нужно парсить под конкретной учетной записью, и не запрашивать логин/пароль у пользователя</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Страница авторизации
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table with-checkbox">
+                        <tr>
+                            <td class="form__field">
+                                <input class="textbox" id="edAuthUrl" name="AuthSettings.AuthUrl" placeholder="Например, http://www.detrazmer.ru/client_account/login" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthUrl" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="form__field">
+                                <input checked="checked" class="checkbox" data-val="true" data-val-required="Требуется поле PasswordRequired." id="edPasswordRequired" name="AuthSettings.PasswordRequired" type="checkbox" value="true" /><input name="AuthSettings.PasswordRequired" type="hidden" value="false" />
+                                <label for="edPasswordRequired">Необходим пароль</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form__help" style="margin-top: -10px;">Указывается, если форма авторизации не на главной странице.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    XPath формы<br />авторизации
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table with-checkbox">
+                        <tr>
+                            <td class="form__field">
+                                <input class="textbox" id="edFormXPath" name="AuthSettings.FormXPath" placeholder="Например, //form[@id=&#39;login&#39;]" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.FormXPath" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="form__field">
+                                <input checked="checked" class="checkbox" data-val="true" data-val-required="Требуется поле AllowAutoRedirect." id="edAllowAutoRedirect" name="AuthSettings.AllowAutoRedirect" type="checkbox" value="true" /><input name="AuthSettings.AllowAutoRedirect" type="hidden" value="false" />
+                                <label for="edAllowAutoRedirect">Разрешить автоматический редирект</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form__help">Определяется автоматически как первая POST форма с контролом для ввода пароля. При необходимости можно указать вручную.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Страница<br /> POST-запроса
+                </td>
+                <td class="form__field">
+                    <table class="site-form-row-table with-checkbox">
+                        <tr>
+                            <td class="form__field">
+                                <input class="textbox" id="edPostUrl" name="AuthSettings.PostUrl" placeholder="Например, http://www.detrazmer.ru/client_account/session" type="text" value="" />
+                                <span class="field-validation-valid" data-valmsg-for="AuthSettings.PostUrl" data-valmsg-replace="true"></span>
+                            </td>
+                            <td class="form__field">
+                                <input class="checkbox" data-val="true" data-val-required="Требуется поле UseGetMethod." id="edUseGetMethod" name="AuthSettings.UseGetMethod" type="checkbox" value="true" /><input name="AuthSettings.UseGetMethod" type="hidden" value="false" />
+                                <label for="edUseGetMethod">Использовать GET для отправки</label>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="form__help">Определяется автоматически по форме, оставлено для поддержки старых настроек. При необходимости можно указать вручную.</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="form__title">
+                    Шаблон тела<br /> POST-запроса
+                </td>
+                <td class="form__field">
+                    <div class="jsParamParseSetting">
+                        <table class="site-form-row-table with-script">
+                            <tr>
+                                <td class="form__field">
+                                    <input class="textbox" helptext="Выражение вида username={login}&amp;password={pass}" id="edContentPattern" name="AuthSettings.ContentPattern" placeholder="Например, username={login}&amp;password={pass} " type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="AuthSettings.ContentPattern" data-valmsg-replace="true"></span>
+                                    <div class="form__help">Определяется автоматически по форме. При необходимости можно указать вручную выражение вида username={login}&amp;password={pass}</div>
+                                </td>
+                                <td class="site-form-row-table__more-btn">
+
+                                    <button type="button" class="button features-editor__more-btn jsMore "><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="site-form-row-table__more jsItemMore">
+                                        <textarea class="textarea site-form-row-table__script" cols="20" id="edContentPatternItemScript" name="AuthSettings.ContentPatternItemScript" placeholder="Скрипт получения значений элементов вида key={javascriptval}. Пример:
+                                        val = &#39;&#39;; if (valueName === &#39;csrf_key&#39;) { val = html.match(/&lt;script>var csrf_key = &quot;(.*)&quot;&lt;/)[1] }
+                                        valueName - это имя параметра, для которого ищется значение,
+                                        html - переменная, содержащая html страницы авторизации" rows="2">
+                                    </textarea>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Дополнительные заголовки <br />запроса
+            </td>
+            <td class="form__field">
+                <input class="textbox" id="edAdditionalRequestHeadersStr" name="AuthSettings.AdditionalRequestHeadersStr" placeholder="Например, {&quot;Accept&quot;: &quot;application/json&quot;, &quot;Content-Type&quot;: &quot;application/json&quot;}" type="text" value="{}" />
+                <div class="form__help">
+                    Указывается если необходимо передать какие-либо дополнительные заголовки.
+                    Например, {&quot;Accept&quot;: &quot;application/json&quot;, &quot;Content-Type&quot;: &quot;application/json&quot;}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Тип проверки<br />авторизованности
+            </td>
+            <td class="form__field">
+                <table class="site-form-row-table">
+                    <tr>
+                        <td class="" style="width: 10%; vertical-align: middle;">
+                            <select class="select" data-val="true" data-val-required="Требуется поле AuthSuccessCheckerType." id="edAuthSuccessCheckerType" name="AuthSettings.AuthSuccessCheckerType" title="Тип проверки валидности аутентификации" value="0"><option selected="selected" value="0">XPathExists</option>
+                                <option value="1">XPathNotExists</option>
+                            </select>
+                            <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthSuccessCheckerType" data-valmsg-replace="true"></span>
+                        </td>
+                        <td class="" style="width: 60%;">
+                            <input class="textbox" id="edAuthSuccessCheckerValue" name="AuthSettings.AuthSuccessCheckerValue" placeholder="XPath" type="text" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthSuccessCheckerValue" data-valmsg-replace="true"></span>
+                        </td>
+                        <td class="" style="width: 1%; vertical-align: middle;">
+                            <select class="select" data-val="true" data-val-required="Требуется поле AuthSuccessCheckerRegExType." id="edAuthSuccessCheckerRegExType" name="AuthSettings.AuthSuccessCheckerRegExType" title="Тип проверки значения RegEx" value="0"><option selected="selected" value="0">Match</option>
+                                <option value="1">NotMatch</option>
+                            </select>
+                            <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthSuccessCheckerRegExType" data-valmsg-replace="true"></span>
+                        </td>
+                        <td class="" style="width: 20%;">
+                            <input class="textbox" id="edAuthSuccessCheckerRegEx" name="AuthSettings.AuthSuccessCheckerRegEx" placeholder="RegExp" type="text" value="" />
+                            <span class="field-validation-valid" data-valmsg-for="AuthSettings.AuthSuccessCheckerRegEx" data-valmsg-replace="true"></span>
+                        </td>
+                    </tr>
+                </table>
+                <div class="form__help">Определяется автоматически как отсутствие формы авторизации. При необходимости можно указать вручную.</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Текст пользователю
+            </td>
+            <td class="form__field">
+                <input class="textbox" id="AuthSettings_Description" name="AuthSettings.Description" placeholder="Что дает авторизация" type="text" value="" />
+                <div class="form__help">
+                    Указав логин и пароль от сайта, <b>Вы сможете загружать оптовые цены</b>.<br />
+                    (Указывается выделенная в тексте часть, она же - значение по умолчанию, если ничего не указано.)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                <label for="edSameDataForDiffLogins">Одинаковые данные<br/>для разных логинов</label>
+            </td>
+            <td class="form__field">
+                <input checked="checked" class="checkbox" data-val="true" data-val-required="Требуется поле SameDataForDiffLogins." id="edSameDataForDiffLogins" name="AuthSettings.SameDataForDiffLogins" type="checkbox" value="true" /><input name="AuthSettings.SameDataForDiffLogins" type="hidden" value="false" /> <div class="form__help" style="display: inline;">Включено, если на сайте отображаются одни и те же данные под разными логинами, например, цена для всех оптовиков одинаковая.</div>
+                <span class="field-validation-valid" data-valmsg-for="AuthSettings.SameDataForDiffLogins" data-valmsg-replace="true"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <div class="page-section-header">
+                    <h3>Кеширование</h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                <label for="edCacheEnable">Включено</label>
+            </td>
+            <td class="form__field">
+                <input checked="checked" class="checkbox" data-val="true" data-val-required="Требуется поле Enabled." id="edCacheEnable" name="CacheSettings.Enabled" type="checkbox" value="true" /><input name="CacheSettings.Enabled" type="hidden" value="false" /> <div class="form__help" style="display: inline;">- не используется при тестовой загрузке (?test=1)</div>
+                <span class="field-validation-valid" data-valmsg-for="CacheSettings.Enabled" data-valmsg-replace="true"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Область кеширования
+            </td>
+            <td class="form__field">
+                <input class="textbox" id="CacheSettings_CachedAreaXPath" name="CacheSettings.CachedAreaXPath" placeholder="XPath" type="text" value="//div[contains(@class,&#39;content-area&#39;)] | //div[@class=&#39;item-description&#39;]" />
+                <span class="field-validation-valid" data-valmsg-for="CacheSettings.CachedAreaXPath" data-valmsg-replace="true"></span>
+                <div class="form__help">Область кеширования не должна содержать меняющиеся данные: время загрузки страницы, комментарии, голосования... Если XPATH не указан - кешируется вся страница.</div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="form__title">
+                <label>Html-кеш</label>
+            </td>
+            <td class="form__field">
+                <label><input class="checkbox" data-val="true" data-val-required="Требуется поле HtmlCacheDisabled." id="CacheSettings_HtmlCacheDisabled" name="CacheSettings.HtmlCacheDisabled" type="checkbox" value="true" /><input name="CacheSettings.HtmlCacheDisabled" type="hidden" value="false" /> Отключить Html-кеш (динамичный сайт)</label>
+                <span class="field-validation-valid" data-valmsg-for="CacheSettings.Enabled" data-valmsg-replace="true"></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <div class="page-section-header">
+                    <h3>Дополнительно</h3>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Cookies
+            </td>
+            <td class="form__field">
+                <input class="textbox" id="edInitialCookies" name="ParseSettings.InitialCookies" style="width:100%;" type="text" value="" />
+                <span class="field-validation-valid" data-valmsg-for="ParseSettings.InitialCookies" data-valmsg-replace="true"></span>
+                <div class="form__help">Значения куки в формате name1=value; name2=value</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="form__title">
+                Примечания<br /> по настройке сайта
+            </td>
+            <td class="form__field">
+                <textarea class="textarea" cols="20" id="Notes" name="Notes" rows="2" style="height:50px;">
+                </textarea>
+                <span class="field-validation-valid" data-valmsg-for="Notes" data-valmsg-replace="true"></span>
+                <div class="form__help">Настраивающий! Указывай все, что не удалось настроить! Качество - наш конек!</div>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>&nbsp;</td>
+            <td class="form__btns">
+                <input type="submit" value="Сохранить" id="saveBtn" class="button primary-button" />
+
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+</div>
+
+</body>
+</html>

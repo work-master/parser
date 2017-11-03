@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cloudparser.ru/Css/3d/AwesomeFont/css/font-awesome.min.css?2">
+    <link rel="stylesheet" href="https://cloudparser.ru/css/3d/ui/jquery-ui.css?1">
+
+    <link rel="shortcut icon" href="https://cloudparser.ru/img/favicon.png">
+    <link href="https://cloudparser.ru/cssBundles/common?v=zTv63Y35QcJiPDG3d3KaarI7GEdCoxAHzvRoqLom-Eo1" rel="stylesheet"/>
+
+    
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+    <script src="https://vk.com/js/api/openapi.js?146" type="text/javascript"></script>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Сайты - Облачный парсер</title>
+        <meta name="description" content="" />
+
+        <meta name="keywords" content="" />
+
+
+
+
+
+    <script>
+        CP = {};
+        CP.isFrame = false;
+    </script>
+</head>
+
+<body  >
+
+    <div class="page-wr">
+<div class="header" id="header">
+    <div class="header__logo"><a href="/" title="Облачный парсер" class="logo-img"></a></div>
+    <div class="header__nav">
+        
+
+
+
+
+
+
+<ul class="c-menu auth-menu">
+        <li class="c-menu__i">
+            <a class="c-menu__i1" href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Каталог сайтов</a>
+                <ul class="c-menu__sub">
+                        <li class="c-menu__si">
+                            <a href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Все сайты</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/catalog?free=1" ><i class='fa fa-gift'></i>&nbsp;Бесплатные сайты</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="javascript:void(0)" id = bookmarkMenuItem><i class='fa fa-bookmark'></i> У меня в закладках</a>
+                        </li>
+                </ul>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i2" href="/responses" ><i class='fa fa-star'></i>&nbsp;Отзывы</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i3" href="/news" ><i class='fa fa-newspaper-o'></i>&nbsp;Новости</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i4" href="/history" ><i class='fa fa-history'></i>&nbsp;История загрузок</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i5" href="/billing" ><span title='Использовано 1 сайт из 1 включенных в тариф'>8950 руб. (1 / 1)</span></a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i6" href="/price" >Стоимость</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i7" href="/page/suppliers" >Поставщику</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i8" href="/users/profile" >Профиль</a>
+                <ul class="c-menu__sub">
+                        <li class="c-menu__si">
+                            <a href="/users/profile" ><i class='fa fa-user'></i> Профиль пользователя</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/billing/pay" ><i class='fa fa-credit-card'></i> Пополнить баланс</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="mailto:welcome@cloudparser.ru" ><i class='fa fa-envelope'></i>&nbsp;welcome@cloudparser.ru</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/logout" ><i class='fa fa-sign-out'></i>&nbsp;Выход</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="#" >----------</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin" >Список сайтов</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/accounts" >Список пользователей</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/events" >События</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/tests" >Сеансы тестирования</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/tools" >Инструменты</a>
+                        </li>
+                </ul>
+        </li>
+</ul>
+    </div>
+</div>
+        <div class="page">
+            <div class="header-with-content">
+    <a class="button primary-button" href="/admin/add" style="padding-top: 7px;">+ Добавить сайт</a>
+    <h1 class="page-header">Сайты</h1>    
+</div>
+
+<div class="panel grid-filter">
+    <form action="/admin" method="get" id="searchForm">
+        <input class="textbox" id="Search" name="Search" placeholder="Поиск по имени или домену" style="width:300px;" type="text" value="" />
+        
+        <input id="opField" name="Op" type="hidden" value="" />
+
+        <input type="submit" class="button panel-button" value="Поиск" style="margin-left:5px;" />
+        <input type="button" class="button panel-button" value="Отмена" onclick="window.location='/admin'"/>
+    </form>
+</div>
+
+<table class="grid site-grid">
+    <tr>
+        <th>
+            Фото
+        </th>
+        <th>
+            Сайт
+        </th>
+        <th>
+            Добавлен
+        </th>
+        <th>
+            Изменен
+        </th>
+        <th>
+            Статус
+        </th>
+        <th>
+            Тест
+        </th>
+    </tr>
+
+
+
+<!--Выводим список сайтов -->
+
+<?php  
+
+while($data=mysql_fetch_array($result)) // цикл вывода
+{
+  	
+	// Формирование записи "Активен/Неактивен"
+	if ($data[3] == 1) {
+		$activeString = 'Активен';
+	} else {
+		$activeString = 'Неактивен';
+	}
+
+
+	echo '<tr>';
+	echo '<td><a href="/admin/edit?siteid=' . $data[0] . '"><img src="/files/4c0/4c04182b1ce08748768628bafe2f7bf0-fit-200x200.png" alt="" class="site-grid__img" /></a></td>';
+	echo '<td><a href="/admin/edit?siteid=' . $data[0] . '">www.' . $data[1] . '</a></td>';
+	echo '<td>' . $data[58] . '<br/></td>';
+	echo '<td>' . $data[59] . '<br/></td>';
+	echo '<td>' . $activeString . '</td>';
+	echo '<td><a href="/letsgo?siteid=' . $data[0] . '&check=1" class="button" target="_blank" style="padding-top: 7px;">Тест</a></td>';
+	echo '</tr>';
+
+}
+
+?>
+
+</table>
+
+
+<!-- Выводим пагинацию -->
+
+<?php
+
+if($total>1):
+	#две назад
+	print '<br><div class="pagination">';
+	if(($p-2)>0):
+	  $ptwoleft="<a class='first_page_link' href='?p=".($p-2)."'>".($p-2)."</a>  ";
+	else:
+	  $ptwoleft=null;
+	endif;
+			
+	#одна назад
+	if(($p-1)>0):
+	  $poneleft="<a class='first_page_link' href='?p=".($p-1)."'>".($p-1)."</a>  ";
+	  $ptemp=($p-1);
+	else:
+	  $poneleft=null;
+	  $ptemp=null;
+	endif;
+			
+	#две вперед
+	if(($p+2)<=$total):
+	  $ptworight="  <a class='first_page_link' href='?p=".($p+2)."'>".($p+2)."</a>";
+	else:
+	  $ptworight=null;
+	endif;
+			
+	#одна вперед
+	if(($p+1)<=$total):
+	  $poneright="  <a class='first_page_link' href='?p=".($p+1)."'>".($p+1)."</a>";
+	  $ptemp2=($p+1);
+	else:
+	  $poneright=null;
+	  $ptemp2=null;
+	endif;		
+			
+	# в начало
+	if($p!=1 && $ptemp!=1 && $ptemp!=2):
+	  $prevp="<a href='/admin' class='first_page_link' title='В начало'><<</a> ";
+	else:
+	  $prevp=null;
+	endif;   
+			
+	#в конец (последняя)
+	if($p!=$total && $ptemp2!=($total-1) && $ptemp2!=$total):
+	  $nextp=" ...  <a href='?p=".$total."'".$total."' class='first_page_link'>$total</a>";
+	else:
+	  $nextp=null;
+	endif;
+		
+	print "<br>".$prevp.$ptwoleft.$poneleft.'<span class="num-page-not-link"><b>'.$p.'</b></span>'.$poneright.$ptworight.$nextp; 
+	print "</div>";
+endif;
+?>
+
+</body></html>

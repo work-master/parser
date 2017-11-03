@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="https://cloudparser.ru/img/favicon.png">
+    <link href="https://cloudparser.ru/cssBundles/common?v=zTv63Y35QcJiPDG3d3KaarI7GEdCoxAHzvRoqLom-Eo1" rel="stylesheet"/>
+
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+
+    <?php
+        connectDb();
+        echo '<title>Загрузка сайта ' . domainValue() . ' - Мощный Парсер</title>';
+    ?>
+        <meta name="description" content="" />
+
+        <meta name="keywords" content="" />
+
+</head>
+
+<body  >
+
+    <div class="page-wr">
+<div class="header" id="header">
+    <div class="header__logo"><a href="/" title="Облачный парсер" class="logo-img"></a></div>
+    <div class="header__nav">
+        
+
+
+
+
+
+
+<ul class="c-menu auth-menu">
+        <li class="c-menu__i">
+            <a class="c-menu__i1" href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Каталог сайтов</a>
+                <ul class="c-menu__sub">
+                        <li class="c-menu__si">
+                            <a href="/catalog" ><i class='fa fa-bars'></i>&nbsp;Все сайты</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/catalog?free=1" ><i class='fa fa-gift'></i>&nbsp;Бесплатные сайты</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="javascript:void(0)" id = bookmarkMenuItem><i class='fa fa-bookmark'></i> У меня в закладках</a>
+                        </li>
+                </ul>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i2" href="/responses" ><i class='fa fa-star'></i>&nbsp;Отзывы</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i3" href="/news" ><i class='fa fa-newspaper-o'></i>&nbsp;Новости</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i4" href="/history" ><i class='fa fa-history'></i>&nbsp;История загрузок</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i5" href="/billing" ><span title='Использовано 1 сайт из 1 включенных в тариф'>8950 руб. (1 / 1)</span></a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i6" href="/price" >Стоимость</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i7" href="/page/suppliers" >Поставщику</a>
+        </li>
+        <li class="c-menu__i">
+            <a class="c-menu__i8" href="/users/profile" >Профиль</a>
+                <ul class="c-menu__sub">
+                        <li class="c-menu__si">
+                            <a href="/users/profile" ><i class='fa fa-user'></i> Профиль пользователя</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/billing/pay" ><i class='fa fa-credit-card'></i> Пополнить баланс</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="mailto:welcome@cloudparser.ru" ><i class='fa fa-envelope'></i>&nbsp;welcome@cloudparser.ru</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/logout" ><i class='fa fa-sign-out'></i>&nbsp;Выход</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="#" >----------</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin" >Список сайтов</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/accounts" >Список пользователей</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/events" >События</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/tests" >Сеансы тестирования</a>
+                        </li>
+                        <li class="c-menu__si">
+                            <a href="/admin/tools" >Инструменты</a>
+                        </li>
+                </ul>
+        </li>
+</ul>
+    </div>
+</div>
+        <div class="page">
+            <div class='back-link'>←  <a href='/'>Назад</a></div>
+
+<h1 class="page-header page-header_start-page">Загрузка товаров с сайта 
+    <?php
+        echo '<span id="domainName">' . domainValue() . '</span>'; 
+    ?>
+</h1>
+
+<div class="start-page">    
+
+    <form action="" id="letsgoForm">
+
+    <div class="form-panel start-parse-form">
+
+        <div class="start-page__promotion">
+                <i class="fa fa-gift" style="color:#FF901B;"></i>
+                <span>Загрузка товаров производится бесплатно, поскольку <a href="/page/suppliers" target="_blank">спонсируется поставщиком</a>.</span>
+        </div>
+
+
+
+        <div class="start-page__title">
+
+
+
+            Укажите ссылку на список товаров на сайте 
+            <?php
+                echo '<a href="http://' . domainValue() . '" target="_blank">' . domainValue() . '</a>';
+            ?> 
+            <span class="fa fa-external-link"></span>.
+                
+                   <!-- <br /> Если Вы сомневаетесь какие ссылки нужно указывать, посмотрите на <a href="http://bimki.ru/shkolnaya-forma.php/dlya-devochek.php/komplekty/" target="_blank">пример списка товаров</a>&nbsp;  и укажите аналогичную страницу. &nbsp;&nbsp;<button title="Вставить демо-ссылку" type="button" data-href="http://bimki.ru/shkolnaya-forma.php/dlya-devochek.php/komplekty/" id="demoUrlBtn" class="button small-button">Пример</button> -->
+                
+        </div>
+
+        <div class="start-page__parse-url-wr urls-editor" id="inputsBlock"></div>
+
+        <div class="start-page__parse-btn-wr">
+            <button type="button" class="button primary-button" id="letsgoBtn">Начать загрузку!</button>
+        </div>
+    </div>
+    </form>
+
+</div>
+        </div>
+    </div>
+
+    <div id="emptyBlock">
+        <div class="posr-cont">
+            <div class="close">X</div>
+            <span>Ану укажи ссылку!</span>
+        </div>
+    </div>
+
+    <style>
+        #emptyBlock{
+            display: none;
+            position: fixed;
+            text-align: center;
+            top: 100px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 99999999999999;
+            width: 35%;
+            height: 450px;
+            background: #dd2211;
+            text-transform: uppercase;
+            color: yellow;
+            font-weight: bold;
+            font-size: 35px;
+        }
+        .posr-cont{
+            position: relative;
+        }
+        .posr-cont span{
+            margin-top: 200px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .close{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50px;
+            height: 35px;
+            cursor: pointer;
+            text-align: center;
+            padding-top: 15px;
+            background: #333;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .error-massage{
+            visibility: hidden;
+            color: red;
+            font-size: 13px;
+        }
+        .error-massage.error-massage_visible{
+            visibility: visible;
+            animation: leftRight 0.5s;
+        }
+
+        @keyframes leftRight {
+            12% {
+                transform: translate(-.5%, 0);
+            }
+            24% {
+                transform: translate(.5%, 0);
+            }
+            36% {
+                transform: translate(-.5%, 0);
+            }
+            48% {
+                transform: translate(.5%, 0);
+            }
+            60% {
+                transform: translate(-.5%, 0);
+            }
+            72% {
+                transform: translate(.5%, 0);
+            }
+            84% {
+                transform: translate(-.5, 0);
+            }
+            100%{
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+
+    <script>
+
+        // Не задумываться над этим бредом, просто скопировать и пользоваться (документация к коду).
+
+        $(document).ready(function() {
+
+            var delBtn;
+            var inputVal;
+            var domainName = $('#domainName').text();
+            var flag, flagOut = 0, flagAmpOut = 0, fullInputs = 0;
+            var startInputs = '<div class="urls-editor__items jsList"><div class="urls-editor__i jsItem"><div class="urls-editor__lt"><div class="inputfields urls-editor__cell"><input class="textbox jsTextBox urlinput" placeholder="Скопируйте и вставьте ссылку на список товаров" name="linkVal" type="text" value=""><div class="error-massage">Указанная ссылка не принадлежит сайту. Укажите ссылку из ' + domainName + ' </div></div><div class="pagesinputs urls-editor__cell"><input type="number" class="textbox" id="textboxStartPage" value="" min="1" max="3000" placeholder="страницы с"><input type="number" class="textbox" id="textboxEndPage" value="" min="1" max="3000" placeholder="по"></div><span class="urls-editor__cell"><button type="button" class="button jsPagesBtn" title="Задать диапазон страниц">Страницы</button></span><span class="urls-editor__delBtn urls-editor__cell"><button type="button" class="button jsDel" title="Удалить ссылку"><i class="fa fa-trash-o"></i></button></span></div>  </div></div><div class="urls-editor__btn-wr" id="addBtnWr" style="display: block;"><button type="button" class="button" id="addBtn">+ Добавить ссылку</button></div>';
+            var addInput = '<div class="urls-editor__i jsItem">             <div class="urls-editor__lt">                 <div class="inputfields urls-editor__cell">                     <input class="textbox jsTextBox urlinput" placeholder="Скопируйте и вставьте ссылку на список товаров" name="linkVal" type="text" value="">   <div class="error-massage">Указанная ссылка не принадлежит сайту. Укажите ссылку из ' + domainName + ' </div>              </div>                 <div class="pagesinputs urls-editor__cell">                     <input type="number" class="textbox" id="textboxStartPage" value="" min="1" max="3000" placeholder="страницы с">                     <input type="number" class="textbox" id="textboxEndPage" value="" min="1" max="3000" placeholder="по">                 </div>                 <span class="urls-editor__cell"><button type="button" class="button jsPagesBtn" title="Задать диапазон страниц">Страницы</button></span>                 <span class="urls-editor__delBtn urls-editor__cell"><button type="button" class="button jsDel" title="Удалить ссылку"><i class="fa fa-trash-o"></i></button></span>             </div>         </div>';
+
+            $('#inputsBlock').html(startInputs);
+
+            delBtn = $('.button.jsDel');
+
+            $('#addBtn').on('click', function() {
+                $('.urls-editor__items.jsList').append(addInput);
+                delBtn = $('.button.jsDel');
+                delBtn.on('click', function() {
+                    $(this).parents('.urls-editor__i.jsItem').remove();
+                });
+                $('.textbox.jsTextBox.urlinput').bind('change', function() {
+                    flagAmpOut = 0;
+                    return flagAmpOut;
+                });
+                flagOut = flagAmpOut;
+                return flagOut;
+            });
+
+            $('.close').on('click', function() {
+                $('#emptyBlock').fadeOut(400);
+            });
+
+            $('.textbox.jsTextBox.urlinput').change( function() {
+                flagOut = 0;
+                return flagOut;
+            });
+
+            $('#letsgoBtn').on('click', function() {
+                $('.error-massage').removeClass('error-massage_visible');
+                $('.textbox.jsTextBox.urlinput').each(function() {
+                    if ( $(this).val() != '' ) {
+                        validation();
+                    }
+                    if ( $(this).val() != '' ) {
+                        fullInputs++;
+                    }
+                    return fullInputs;
+                });
+
+                if (flagOut == 0 && fullInputs > 0) {
+                    $('.error-massage').removeClass('error-massage_visible');
+                    sendLinksAjax();    // <------------------  Сюда - ajax post-запрос
+                }
+
+                if ( flagOut == 0 && fullInputs == 0 ) {
+                    $('#emptyBlock').fadeIn(600);
+                    fullInputs = 0;
+                    $('.error-massage').removeClass('error-massage_visible');
+                }
+                fullInputs = 0;
+            });
+
+            function validation() {
+                flag = 0;
+                $('.textbox.jsTextBox.urlinput').each(function(index, element) {
+                    inputVal = $(element).val();
+
+                    if ( inputVal.indexOf(domainName) + 1 == 0 && inputVal != '' ) {
+                        $(element).next().addClass('error-massage_visible');
+                        flag++;
+                        return flag;
+                    }
+                });
+                flagOut = flag;
+                return flagOut;
+            };
+
+            function sendLinksAjax() {
+
+                $('#letsgoBtn').prop('disabled', true);
+
+                // Сбор параметров в текущем url (типа GET запрос на js)
+                $.extend({
+                    getUrlVars: function(){
+                    var vars = [], hash;
+                    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                    for(var i = 0; i < hashes.length; i++)
+                    {
+                        hash = hashes[i].split('=');
+                        vars.push(hash[0]);
+                        vars[hash[0]] = hash[1];
+                    }
+                    return vars;
+                    },
+                    getUrlVar: function(name){
+                    return $.getUrlVars()[name];
+                    }
+                });
+
+                var siteid = $.getUrlVar('siteid');
+                var check = $.getUrlVar('check');
+                
+                //Собираем данные из инпутов формы
+                var arr = $('#letsgoForm').serializeArray(), obj = {};
+                $.each(arr, function(indx, el){
+                  obj[el.name] ? obj[el.name].push(el.value) : (obj[el.name] = [el.value]);
+                });
+
+                $.ajax({
+                    url: "/parsing/receiver.php",
+                    type: "POST",
+                    cache: false,
+                    data: JSON.stringify(obj),
+                    success: function(data){
+                        var resp = $.parseJSON(data);
+                        if ( resp.response == 1 ) {
+                            window.location = '/parsing/' + resp.process + '/index.php?siteid=' + siteid + '&check=' + check + '&process=' + resp.process;
+                            //Переходим на парсинг, если сервер дал добро
+                        }
+                        $('#letsgoBtn').prop('disabled', false);
+                        return false;
+                    }
+                });
+            }
+        });
+
+    </script>
+
+    <?php
+        mysql_close();
+    ?>
+
+</body>
+</html>
